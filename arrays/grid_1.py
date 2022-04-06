@@ -1,4 +1,4 @@
-from array_1 import Array
+from arrays.array_1 import Array
 import random
 
 class Grid:
