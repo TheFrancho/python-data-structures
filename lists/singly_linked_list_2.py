@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from node_2 import Node
 
-@dataclass
+#@dataclass
 class SinglyLinkedList:
     # tail : any = None
     # size : int = 0
@@ -41,8 +41,27 @@ class SinglyLinkedList:
     
 
     def add(self, position, data):
+        node = Node(data)
+        current = self.tail
+
         if position > self.size or position < 1:
+            print("error, lol")
             return False
+        counter = 2
+
+        if position == 1:
+            self.tail = node
+            node.next = current
+            self.size+=1
+        else:
+            while counter < position:
+                current = current.next
+                counter +=1
+            node.next = current.next
+            current.next = node
+            self.size+=1
+            
+
         
 
 
@@ -71,11 +90,10 @@ class SinglyLinkedList:
     
     def clear(self):
         self.tail = None
-        self.head = None
         self.size = 0
     
 
-    def __str__(self) -> str:
+    def __str__(self):
         str_repr = ''
         for i in self.iter():
             str_repr +=str(i) + ","
@@ -84,7 +102,15 @@ class SinglyLinkedList:
 
 if __name__ == '__main__':
     singly_list = SinglyLinkedList()
-    singly_list.append(121)
-    singly_list.append(232)
-    singly_list.append(343)
+    fill_singly_list = [i*121 for i  in range(1,6)]
+
+    for i in fill_singly_list:
+        singly_list.append(i)
+
+    print(singly_list)
+
+    singly_list.add(5, -121)
+    print(singly_list)
+
+    singly_list.delete(-121)
     print(singly_list)
