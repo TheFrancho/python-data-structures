@@ -71,6 +71,7 @@ class SinglyLinkedList:
             if current.data == data:
                 if current == self.tail:
                     self.tail = current.next
+                    self.size-=1
                 else:
                     previous.next = current.next
                     self.size-=1

@@ -123,8 +123,8 @@ if __name__ == '__main__':
     singly_list.add(5, -121)
     print('adding -121 to position 5: ' + str(singly_list))
 
-    singly_list.delete(-121)
-    print('deleting the element -121: ' + str(singly_list))
+    singly_list.delete(121)
+    print('deleting the element 121: ' + str(singly_list))
 
     singly_list.show_connections()
 
