@@ -98,6 +98,20 @@ class SinglyLinkedList:
         return str_repr[:-1]
     
 
+    def show_connections(self):
+        current = self.tail
+        counter = 0
+        while counter < self.size:
+            if current.next:
+                val = current.data
+                print(f'Value {val} connected to {current.next.data}')
+                current = current.next
+                counter+=1
+            else:
+                val = current.data
+                print(f'Value {val} connected to {None}')
+                counter+=1
+
 if __name__ == '__main__':
     singly_list = SinglyLinkedList()
     fill_singly_list = [i*121 for i  in range(1,6)]
@@ -112,3 +126,5 @@ if __name__ == '__main__':
 
     singly_list.delete(-121)
     print(singly_list)
+
+    singly_list.show_connections()

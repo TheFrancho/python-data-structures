@@ -1,20 +1,17 @@
-
-from dataclasses import dataclass
-
-
-@dataclass
 class Node:
-    data : any
-    next: any = None
-
-
-    # def __init__(self, data, next = None):
-    #     self.data = data
-    #     self.next = next
+    def __init__(self, data, next = None):
+        self.data = data
+        self.next = next
 
 
     def __str__(self):
         return f'stored data: {self.data} linked to {self.next.data if self.next != None else None} '
+
+
+class TwoWayNode(Node):
+    def __init__(self, data, previous = None, next=None):
+        super().__init__(data, next)
+        self.previous = previous
 
 
 def node_manual_usage():
