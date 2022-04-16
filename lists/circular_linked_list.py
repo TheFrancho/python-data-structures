@@ -2,9 +2,8 @@ from dataclasses import dataclass
 from node_2 import Node
 
 #@dataclass
-class SinglyLinkedList:
-    # tail : any = None
-    # size : int = 0
+class CircularLinkedList:
+
 
     def __init__(self):
         self.tail = None
@@ -13,17 +12,20 @@ class SinglyLinkedList:
 
     def append(self,data):
         node = Node(data)
-
+        counter = 1
         if self.tail == None:
             self.tail = node
+            self.tail.next = self.tail
             self.size+=1
         else:
             current = self.tail
 
-            while current.next:
+            while counter < self.size:
                 current = current.next
+                counter+=1
             
             current.next = node
+            current.next.next = self.tail
             self.size+=1
     
 
@@ -33,10 +35,11 @@ class SinglyLinkedList:
     
     def iter(self):
         current = self.tail
-
-        while current:
+        counter = 0
+        while current and counter < self.size:
             val = current.data
             current = current.next
+            counter+=1
             yield val
     
 
@@ -99,8 +102,10 @@ class SinglyLinkedList:
     
 
 if __name__ == '__main__':
-    singly_list = SinglyLinkedList()
+    singly_list = CircularLinkedList()
     fill_singly_list = [i*121 for i  in range(1,6)]
+
+    print(fill_singly_list)
 
     for i in fill_singly_list:
         singly_list.append(i)
@@ -112,3 +117,4 @@ if __name__ == '__main__':
 
     singly_list.delete(-121)
     print(singly_list)
+
