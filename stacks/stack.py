@@ -67,7 +67,16 @@ class Stack:
 
 if __name__ == '__main__':
     stack = Stack()
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
+
+    stack_filler = [i*100 for i in range(1,6)]
+
+    for i in stack_filler:
+        stack.push(i)
+        
     print(stack)
+    stack.pop()
+    stack.pop()
+    print(stack)
+    print(stack.peek())
+    stack.clear()
+    print(stack.peek())
